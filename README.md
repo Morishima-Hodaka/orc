@@ -74,6 +74,7 @@ image.show()
 ---
 
 # ddddocr
+
 python <= 3.9
 
 ```python
@@ -94,7 +95,8 @@ print(res)
 ![Alt text](image.png)
 
 ---
-#  目标检测部分
+
+# 目标检测部分
 
 ```python
 
@@ -128,13 +130,12 @@ for box in poses:
 cv2.imwrite("2.jpg", im)
     
 ```
-![Alt text](1.png)
 
+![Alt text](1.png)
 
 ---
 
 ## 滑动拼图验证码
-
 
 ```python
 import ddddocr
@@ -155,13 +156,16 @@ print(res)
 
 ```
 
-![Alt text](target.png) 
+![Alt text](target.png)
 ![Alt text](background.png)
 
 ---
+
 # 算法2
+
 一张图为带坑位的原图
 一张图为原图
+
 ```python
 import cv2
 import ddddocr
@@ -180,13 +184,18 @@ res = slide.slide_comparison(target_bytes, background_bytes)
 print(res)
 
 ```
-![Alt text](3.jpg) 
+
+![Alt text](3.jpg)
 ![Alt text](4.jpg)
 
 ---
+
 # tesseract-ocr 安装
-https://www.jianshu.com/p/93ab58dea50f
-https://digi.bib.uni-mannheim.de/tesseract/
+
+##### 增加一个TESSDATA_PREFIX变量名，变量值还是我的安装C:\Program Files\Tesseract-OCR\tessdata这是将语言字库文件夹添加到变量中
+
+<https://www.jianshu.com/p/93ab58dea50f>
+<https://digi.bib.uni-mannheim.de/tesseract/>
 
 ---
 
