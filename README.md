@@ -194,7 +194,7 @@ print(res)
 
 ##### 增加一个TESSDATA_PREFIX变量名，变量值还是我的安装C:\Program Files\Tesseract-OCR\tessdata这是将语言字库文件夹添加到变量中
 
-<https://www.jianshu.com/p/93ab58dea50f>
+<https://www.jianshu.com/p/93ab58dea50f> 
 <https://digi.bib.uni-mannheim.de/tesseract/>
 
 ---
@@ -213,4 +213,50 @@ code = pytesseract.image_to_string(image)
 # 3：输出识别的内容
 print(code)
 
+```
+
+---
+
+# 图像处理
+
+```python
+# https://www.qyyshop.com/info/632866.html
+from PIL import Image
+import numpy as np
+image=Image.open('code.jpg')
+#np.array()函数将图像转换为NumPy数组，然后使用.shape属性获取数组的形状
+print(np.array(image).shape)
+print(image.mode)
+
+# (48, 131, 4)
+# RGBA
+
+
+import tesserocr
+from PIL import Image
+import numpy as np
+
+image=Image.open('code2.jpg')
+image=image.convert('L')
+threshold=120
+array=np.array(image)
+"""
+np.where是NumPy库中的一个函数，用于根据指定的条件返回数组中满足条件的元素的索引或值。
+
+np.where(condition, x, y)的语法是：
+
+condition：一个布尔数组或条件表达式，用于指定要检查的条件。
+x：满足条件时要返回的值。
+y：不满足条件时要返回的值。
+当condition为布尔数组时，np.where返回一个元组，其中包含满足条件的元素的索引数组。
+
+当condition为条件表达式时，np.where返回一个新的数组，其中满足条件的元素被x替换，不满足条件的元素被y替换。
+"""
+array=np.where(array>threshold,255,0)
+# uint8是一种无符号8位整数类型
+# Image.fromarray()是一个函数，它可以将一个数组转换为图像对象
+# array.astype()是一个NumPy数组的方法，它用于将数组的元素类型转换为指定的类型
+image=Image.fromarray(array.astype('uint8'))
+
+print(tesserocr.image_to_text(image))
 ```
